@@ -124,14 +124,14 @@ class Ui_VoteWindow(object):
         font.setPointSize(12)
         self.EdwardLabel.setFont(font)
         self.EdwardLabel.setObjectName("EdwardLabel")
-        self.submitButton_2 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.submitButton_2.setGeometry(QtCore.QRect(710, 650, 251, 61))
+        self.exitButton = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.exitButton.setGeometry(QtCore.QRect(710, 650, 251, 61))
         font = QtGui.QFont()
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
-        self.submitButton_2.setFont(font)
-        self.submitButton_2.setObjectName("submitButton_2")
+        self.exitButton.setFont(font)
+        self.exitButton.setObjectName("exitButton")
         VoteWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(VoteWindow)
@@ -150,7 +150,7 @@ class Ui_VoteWindow(object):
         self.FeliciaLabel.setText(_translate("VoteWindow", "Votes for Felicia"))
         self.BiancaLabel.setText(_translate("VoteWindow", "Votes for Bianca"))
         self.EdwardLabel.setText(_translate("VoteWindow", "Votes for Edward"))
-        self.submitButton_2.setText(_translate("VoteWindow", "Exit"))
+        self.exitButton.setText(_translate("VoteWindow", "Exit"))
 
 
 if __name__ == "__main__":
