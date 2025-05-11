@@ -3,7 +3,7 @@ from gui import *
 import csv
 
 class Logic(QMainWindow, Ui_VoteWindow):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         self.setupUi(self)
 
@@ -22,10 +22,10 @@ class Logic(QMainWindow, Ui_VoteWindow):
     def getVotes(self) -> dict:
         return self.votes
 
-    def updateVotes(self, newVotes:dict):
+    def updateVotes(self, newVotes:dict) -> None:
         self.votes = newVotes
 
-    def closeEvent(self):
+    def closeEvent(self) -> None:
         import sys
         sys.exit(0)
 
@@ -36,7 +36,7 @@ class Logic(QMainWindow, Ui_VoteWindow):
         self.voteCountEdward.setText(str(votes['Edward']))
         self.voteCountFelicia.setText(str(votes['Felicia']))
 
-    def updateCsv(self, votes:dict, ids:list[str]):
+    def updateCsv(self, votes:dict, ids:list[str]) -> None:
         with open('votes.csv','a') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(['Voter ids'] + ids)
