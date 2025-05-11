@@ -32,9 +32,9 @@ class Logic(QMainWindow, Ui_VoteWindow):
     def updateText(self, votes:dict, instructions:str) -> None:
         """updates labels for instructions and vote counts"""
         self.instructionLabel.setText(instructions)
-        self.BiancaLabel.setText(str(votes[0]))
-        self.EdwardLabel.setText(str(votes[1]))
-        self.FeliciaLabel.setText(str(votes[2]))
+        self.voteCountBianca.setText(str(votes['Bianca']))
+        self.voteCountEdward.setText(str(votes['Edward']))
+        self.voteCountFelicia.setText(str(votes['Felicia']))
 
     def submit(self) -> None:
         """This is called when the submit button is pushed
@@ -64,4 +64,3 @@ class Logic(QMainWindow, Ui_VoteWindow):
                 self.updateText(votes, 'Votes successfully updated')
             else:
                 self.updateText(votes, 'Candidate not selected')
-
