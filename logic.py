@@ -36,6 +36,15 @@ class Logic(QMainWindow, Ui_VoteWindow):
         self.voteCountEdward.setText(str(votes['Edward']))
         self.voteCountFelicia.setText(str(votes['Felicia']))
 
+    def updateCsv(self, votes:dict, ids:list[str]):
+        with open('votes.csv','a') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(['Voter ids'] + ids)
+            writer.writerow(['Bianca',votes['Bianca']])
+            writer.writerow(['Edward',votes['Edward']])
+            writer.writerow(['Felicia',votes['Felicia']])
+
+
     def submit(self) -> None:
         """This is called when the submit button is pushed
         It will check the voter id and compare it to voter ids already in use
@@ -69,3 +78,5 @@ class Logic(QMainWindow, Ui_VoteWindow):
                 self.updateText(votes, 'Id already used')
         else:
             self.updateText(votes, 'Id is invalid, please enter a three digit number')
+
+        self.updateCsv(votes, idList)
