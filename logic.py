@@ -15,7 +15,7 @@ class Logic(QMainWindow, Ui_VoteWindow):
     def getIds(self) -> List[int]:
         return self.idList
 
-    def updateIds(self, ids:List[int]):
+    def updateIds(self, ids:List[int]) -> None:
         self.idList = ids
 
     def submit(self) -> None:
@@ -27,4 +27,5 @@ class Logic(QMainWindow, Ui_VoteWindow):
 
         if id not in idList:
             idList.append(id)
+
 
