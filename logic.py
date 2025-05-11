@@ -44,7 +44,7 @@ class Logic(QMainWindow, Ui_VoteWindow):
         idList = self.getIds()
         votes = self.getVotes()
 
-        if len(voterId) == 3 and voterId.isdigit()
+        if len(voterId) == 3 and voterId.isdigit():
             if voterId not in idList:
                 idList.append(voterId)
 
