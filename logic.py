@@ -19,18 +19,49 @@ class Logic(QMainWindow, Ui_VoteWindow):
     def updateIds(self, ids:list[int]) -> None:
         self.idList = ids
 
+    def getVotes(self) -> dict:
+        return self.votes
+
+    def updateVotes(self, newVotes:dict):
+        self.votes = newVotes
+
     def closeEvent(self):
         import sys
         sys.exit(0)
 
+    def updateText(self, votes:dict, instructions:str) -> None:
+        """updates labels for instructions and vote counts"""
+        self.instructionLabel.setText(instructions)
+        self.BiancaLabel.setText(str(votes[0]))
+        self.EdwardLabel.setText(str(votes[1]))
+        self.FeliciaLabel.setText(str(votes[2]))
+
     def submit(self) -> None:
-        '''This is called when the submit button is pushed
+        """This is called when the submit button is pushed
         It will check the voter id and compare it to voter ids already in use
-        It will also update the text in the vote counts, and the instruction label'''
-        id = self.voterID.text()
+        It will also update the text in the vote counts, and the instruction label"""
+        voterId = self.voterID.text()
         idList = self.getIds()
+        votes = self.getVotes()
 
-        if id not in idList:
-            idList.append(id)
+        if voterId not in idList:
+            idList.append(voterId)
 
+            if self.biancaRadio.isChecked():
+                votes['Bianca'] += 1
+                self.updateVotes(votes)
+
+                self.updateText(votes, 'Votes successfully updated')
+            elif self.edwardRadio.isChecked():
+                votes['Edward'] += 1
+                self.updateVotes(votes)
+
+                self.updateText(votes, 'Votes successfully updated')
+            elif self.feliciaRadio.isChecked():
+                votes['Felicia'] += 1
+                self.updateVotes(votes)
+
+                self.updateText(votes, 'Votes successfully updated')
+            else:
+                self.updateText(votes, 'Candidate not selected')
 
