@@ -55,21 +55,22 @@ class Logic(QMainWindow, Ui_VoteWindow):
 
         if len(voterId) == 3 and voterId.isdigit():
             if voterId not in idList:
-                idList.append(voterId)
-
                 if self.biancaRadio.isChecked():
                     votes['Bianca'] += 1
                     self.updateVotes(votes)
+                    idList.append(voterId)
 
                     self.updateText(votes, 'Votes successfully updated')
                 elif self.edwardRadio.isChecked():
                     votes['Edward'] += 1
                     self.updateVotes(votes)
+                    idList.append(voterId)
 
                     self.updateText(votes, 'Votes successfully updated')
                 elif self.feliciaRadio.isChecked():
                     votes['Felicia'] += 1
                     self.updateVotes(votes)
+                    idList.append(voterId)
 
                     self.updateText(votes, 'Votes successfully updated')
                 else:
