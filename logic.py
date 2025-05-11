@@ -13,10 +13,10 @@ class Logic(QMainWindow, Ui_VoteWindow):
         self.votes = {'Bianca':0,'Edward':0,'Felicia':0}
         self.idList = []
 
-    def getIds(self) -> list[int]:
+    def getIds(self) -> list[str]:
         return self.idList
 
-    def updateIds(self, ids:list[int]) -> None:
+    def updateIds(self, ids:list[str]) -> None:
         self.idList = ids
 
     def getVotes(self) -> dict:
@@ -44,23 +44,28 @@ class Logic(QMainWindow, Ui_VoteWindow):
         idList = self.getIds()
         votes = self.getVotes()
 
-        if voterId not in idList:
-            idList.append(voterId)
+        if len(voterId) == 3 and voterId.isdigit()
+            if voterId not in idList:
+                idList.append(voterId)
 
-            if self.biancaRadio.isChecked():
-                votes['Bianca'] += 1
-                self.updateVotes(votes)
+                if self.biancaRadio.isChecked():
+                    votes['Bianca'] += 1
+                    self.updateVotes(votes)
 
-                self.updateText(votes, 'Votes successfully updated')
-            elif self.edwardRadio.isChecked():
-                votes['Edward'] += 1
-                self.updateVotes(votes)
+                    self.updateText(votes, 'Votes successfully updated')
+                elif self.edwardRadio.isChecked():
+                    votes['Edward'] += 1
+                    self.updateVotes(votes)
 
-                self.updateText(votes, 'Votes successfully updated')
-            elif self.feliciaRadio.isChecked():
-                votes['Felicia'] += 1
-                self.updateVotes(votes)
+                    self.updateText(votes, 'Votes successfully updated')
+                elif self.feliciaRadio.isChecked():
+                    votes['Felicia'] += 1
+                    self.updateVotes(votes)
 
-                self.updateText(votes, 'Votes successfully updated')
+                    self.updateText(votes, 'Votes successfully updated')
+                else:
+                    self.updateText(votes, 'Candidate not selected')
             else:
-                self.updateText(votes, 'Candidate not selected')
+                self.updateText(votes, 'Id already used')
+        else:
+            self.updateText(votes, 'Id is invalid, please enter a three digit number')
