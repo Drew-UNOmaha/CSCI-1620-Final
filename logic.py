@@ -37,7 +37,7 @@ class Logic(QMainWindow, Ui_VoteWindow):
         self.voteCountFelicia.setText(str(votes['Felicia']))
 
     def updateCsv(self, votes:dict, ids:list[str]) -> None:
-        with open('votes.csv','a') as csvfile:
+        with open('votes.csv','w') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(['Voter ids'] + ids)
             writer.writerow(['Bianca',votes['Bianca']])
