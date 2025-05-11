@@ -8,15 +8,20 @@ class Logic(QMainWindow, Ui_VoteWindow):
         self.setupUi(self)
 
         self.submitButton.clicked.connect(lambda: self.submit())
+        self.exitButton.clicked.connect(lambda: self.closeEvent())
 
         self.votes = {'Bianca':0,'Edward':0,'Felicia':0}
         self.idList = []
 
-    def getIds(self) -> List[int]:
+    def getIds(self) -> list[int]:
         return self.idList
 
-    def updateIds(self, ids:List[int]) -> None:
+    def updateIds(self, ids:list[int]) -> None:
         self.idList = ids
+
+    def closeEvent(self):
+        import sys
+        sys.exit(0)
 
     def submit(self) -> None:
         '''This is called when the submit button is pushed
